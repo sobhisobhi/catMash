@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import catLogo from '../assets/catLogo.png';
 import { ScoreContext } from '../context/ScoreContext.jsx';
-import Header from './Header';
 
 const VotePage = () => {
   const { addScore, scores } = useContext(ScoreContext);
@@ -41,7 +40,6 @@ const VotePage = () => {
   return (
     <>
       <div className="vote-page">
-        {/* <Header /> */}
         <img src={catLogo} alt="catLogo" className="logo" />
         <h1>CAT MASH</h1>
         {currentPair.length === 2 && (

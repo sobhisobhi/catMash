@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ScoreContext } from '../context/ScoreContext.jsx';
-import Header from './Header';
 
 const ScorePage = () => {
   const { scores } = useContext(ScoreContext);
@@ -33,7 +32,6 @@ const ScorePage = () => {
 
   return (
     <div className="score-page">
-      {/* <Header /> */}
       <h1>All Cats and their Scores</h1>
       <ul className="score-list">
         {sortedCats.map((cat) => (
