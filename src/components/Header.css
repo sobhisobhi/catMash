@@ -1,6 +1,7 @@
 /* Header.css */
 
 .header {
+    width: 100%;
     display: grid;
     grid-template-areas: 'logo nav';
     background-color: #5b5ddd;
