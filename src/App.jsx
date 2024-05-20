@@ -9,6 +9,7 @@ import Header from './components/Header';
 function App() {
   return (
     <Router>
+      <div className='container'>
       <Header />
       <ScoreProvider>
         <Routes>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/allCats" element={<ScorePage />} />
         </Routes>
       </ScoreProvider>
+      </div>
     </Router>
   );
 }
