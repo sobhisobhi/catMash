@@ -54,7 +54,6 @@ const VotePage = () => {
                 onClick={() => voteCat(currentPair[0].id)}
               />
               <p>Score: {matchScore(currentPair[0].id)}</p>
-              <p>id: {currentPair[0].id}</p>
             </div>
             <div className="orStyle">
               <h1>OR</h1>
@@ -67,7 +66,6 @@ const VotePage = () => {
                 onClick={() => voteCat(currentPair[1].id)}
               />
               <p>Score: {matchScore(currentPair[1].id)}</p>
-              <p>id: {currentPair[1].id}</p>
             </div>
           </div>
         )}
