@@ -1,21 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import { ScoreContext } from '../context/ScoreContext.jsx';
-
-const ScorePage = () => {
-  const { scores } = useContext(ScoreContext);
-  const [cats, setCats] = useState([]);
-  // A faire avec useQuery pour gerer le datat fetching d'une maniere plus efficiente
-  useEffect(() => {
-    fetch('https://data.latelier.co/cats.json')
-      .then((response) => response.json())
-      .then((data) =>
-        setCats(data.images.map((cat) => ({ ...cat, score: 0 })))
-      );
-  }, []);
-
-  function getVoteWord(number) {
-    return number > 1 ? 'votes' : 'vote';
-  }
 
   // Function to update score in cats with values from scores
   function updateScores(A, B) {
@@ -25,6 +11,27 @@ const ScorePage = () => {
       }
     });
   }
+
+const ScorePage = () => {
+    const [cats, setCats] = useState([]);
+  const { scores } = useContext(ScoreContext);
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['cats'],
+    queryFn: () =>
+      axios.get('https://data.latelier.co/cats.json').then((res) => res.data),
+    onSuccess: (data) => {
+      setCats(data.images.map((cat) => ({ ...cat, score: 0 })));
+    },
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading cats</p>;
+
+  function getVoteWord(number) {
+    return number > 1 ? 'votes' : 'vote';
+  }
+
   updateScores(cats, scores);
   const sortedCats = cats.sort(function (a, b) {
     return b.score - a.score;

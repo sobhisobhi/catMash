@@ -50,7 +50,8 @@ body {
 .cat-images {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 60px;
+  margin: 160px;
 }
 
 .cat-image {
