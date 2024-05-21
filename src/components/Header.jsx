@@ -7,10 +7,10 @@ const Header = () => {
       <h1 className="title">Cutest Cat Voting</h1>
       <nav className="nav">
         <Link to="/" className="nav-link">
-          Vote Page
+          Vote Cats
         </Link>
         <Link to="/allCats" className="nav-link">
-          Scores Page
+          Scores Cats
         </Link>
       </nav>
     </header>
