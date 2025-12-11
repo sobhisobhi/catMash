@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+
+.nav {
+  display: flex;
+  gap: $spacing-sm;
+  justify-content: center;
+}
+
+.button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: 2px solid $border;
+  border-radius: $radius-sm;
+  background: $white;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus-visible {
+    outline: 3px solid $primary;
+    outline-offset: 2px;
+  }
+
+  &.active {
+    background: $primary;
+    color: $white;
+    border-color: $primary;
+  }
+}
