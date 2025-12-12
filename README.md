@@ -7,7 +7,7 @@
 
 Application web interactive permettant de voter pour les chats les plus mignons et de découvrir le classement communautaire basé sur l'algorithme Elo.
 
-🔗 **Demo**: [catmash.vercel.app](https://catmash.vercel.app)
+🔗 **Demo**: [catmash.vercel.app](https://cat-mash-one.vercel.app)
 
 ## ✨ Fonctionnalités
 
