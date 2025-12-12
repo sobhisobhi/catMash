@@ -30,7 +30,7 @@ Application web interactive permettant de voter pour les chats les plus mignons 
 
 ```bash
 # Cloner le repository
-git clone https://github.com/votre-username/catmash.git
+git clone https://github.com/sobhisobhi/catMash
 cd catmash
 
 # Installer les dépendances
