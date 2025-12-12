@@ -7,7 +7,9 @@
   overflow: hidden;
   @include card-shadow;
   cursor: pointer;
-  transition: transform $transition-fast, box-shadow $transition-fast;
+  transition:
+    transform $transition-fast,
+    box-shadow $transition-fast;
   position: relative;
   border: none;
   padding: 0;

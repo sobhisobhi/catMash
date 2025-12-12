@@ -41,7 +41,10 @@ export default function Home() {
   const totalVotes = cats.reduce((sum, cat) => sum + cat.votes, 0);
 
   if (loading) return <Loading />;
-  if (error) return <ErrorMessage message={error} onRetry={() => window.location.reload()} />;
+  if (error)
+    return (
+      <ErrorMessage message={error} onRetry={() => window.location.reload()} />
+    );
 
   return (
     <div className={styles.container}>
@@ -53,10 +56,18 @@ export default function Home() {
 
       <main className={styles.main}>
         {view === 'vote' && pair && (
-          <div className={`${styles.voteContainer} ${fadeOut ? styles.fadeOut : ''}`}>
-            <CatCard cat={pair[0]} onClick={() => handleVote(pair[0].id, pair[1].id)} />
+          <div
+            className={`${styles.voteContainer} ${fadeOut ? styles.fadeOut : ''}`}
+          >
+            <CatCard
+              cat={pair[0]}
+              onClick={() => handleVote(pair[0].id, pair[1].id)}
+            />
             <div className={styles.versus}>VS</div>
-            <CatCard cat={pair[1]} onClick={() => handleVote(pair[1].id, pair[0].id)} />
+            <CatCard
+              cat={pair[1]}
+              onClick={() => handleVote(pair[1].id, pair[0].id)}
+            />
           </div>
         )}
 

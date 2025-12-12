@@ -33,7 +33,7 @@ test.describe('Performance et Accessibilité', () => {
     await page.keyboard.press('Enter');
     
     // Vérifier qu'on peut naviguer
-    await expect(page.getByText(/classement|voter/i)).toBeVisible();
+    await expect(page.getByText(/classement|^🗳️ Voter$/)).toBeVisible();
   });
 
   test('devrait avoir des attributs alt sur les images', async ({ page }) => {

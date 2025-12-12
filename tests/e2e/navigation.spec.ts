@@ -3,6 +3,9 @@ import { test, expect } from '@playwright/test';
 test.describe('Navigation', () => {
   test('devrait naviguer entre Vote et Résultats', async ({ page }) => {
     await page.goto('/');
+    
+    // Attendre le chargement
+    await page.waitForSelector('img[alt*="Chat"]', { timeout: 10000 });
 
     // Par défaut sur Vote
     await expect(page.locator('img[alt*="Chat"]')).toHaveCount(2);
@@ -18,15 +21,18 @@ test.describe('Navigation', () => {
 
   test('devrait mettre en surbrillance le bouton actif', async ({ page }) => {
     await page.goto('/');
+    
+    await page.waitForSelector('img[alt*="Chat"]', { timeout: 10000 });
 
-    const voteButton = page.getByRole('button', { name: /voter/i });
+    const voteButton = page.getByRole('button', { name: /^🗳️ Voter$/ });
+    await expect(voteButton).toHaveClass(/active/);
+    
     const resultsButton = page.getByRole('button', { name: /résultats/i });
 
-    // Vérifier que Vote est actif
-    await expect(voteButton).toHaveCSS('background-color', /rgb\(76, 175, 80\)/);
+    // Vérifier que Vote est actif (a la classe active)
 
     // Cliquer sur Résultats
     await resultsButton.click();
-    await expect(resultsButton).toHaveCSS('background-color', /rgb\(76, 175, 80\)/);
+    await expect(resultsButton).toHaveClass(/active/);
   });
 });

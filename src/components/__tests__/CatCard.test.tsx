@@ -10,28 +10,38 @@ describe('CatCard', () => {
     votes: 5,
   };
 
-  it('devrait afficher l\'image du chat', () => {
-    render(<CatCard cat={mockCat} onClick={() => {}} />);
-    
-    const image = screen.getByAltText(/chat/i);
+  it("devrait afficher l'image du chat", () => {
+    const handleClick = vi.fn();
+    render(<CatCard cat={mockCat} onClick={handleClick} />);
+
+    const image = screen.getByAltText(/chat mignon/i);
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute('src', mockCat.url);
   });
 
-  it('devrait appeler onClick quand cliqué', () => {
+  it("devrait appeler onClick avec l'id du chat quand cliqué", () => {
     const handleClick = vi.fn();
     render(<CatCard cat={mockCat} onClick={handleClick} />);
-    
-    const card = screen.getByRole('button');
-    fireEvent.click(card);
-    
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
     expect(handleClick).toHaveBeenCalledWith(mockCat.id);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('devrait afficher le texte de vote au survol', () => {
-    render(<CatCard cat={mockCat} onClick={() => {}} />);
-    
-    const overlay = screen.getByText(/cliquez pour voter/i);
-    expect(overlay).toBeInTheDocument();
+  it('devrait afficher le texte de vote', () => {
+    const handleClick = vi.fn();
+    render(<CatCard cat={mockCat} onClick={handleClick} />);
+
+    expect(screen.getByText(/cliquez pour voter/i)).toBeInTheDocument();
+  });
+
+  it("devrait avoir l'attribut aria-label", () => {
+    const handleClick = vi.fn();
+    render(<CatCard cat={mockCat} onClick={handleClick} />);
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-label', 'Voter pour ce chat');
   });
 });

@@ -3,7 +3,6 @@ import { Cat } from '@/types/cat';
 import { CATS_API_URL, INITIAL_ELO } from '@/lib/constants';
 import { StorageService } from '@/lib/storage';
 import { calculateElo } from '@/lib/elo';
-import { imageCache } from '@/lib/imageCache';
 
 interface ApiCatImage {
   url: string;
@@ -28,12 +27,16 @@ export const useCatData = () => {
       const stored = StorageService.load();
 
       if (stored && stored.cats && stored.cats.length > 0) {
-        console.log('✅ Chargement depuis localStorage:', stored.cats.length, 'chats');
+        console.log(
+          '✅ Chargement depuis localStorage:',
+          stored.cats.length,
+          'chats'
+        );
         setCats(stored.cats);
         setLoading(false);
         return;
       }
-      console.log('🌐 Chargement depuis l\'API:', CATS_API_URL);
+      console.log("🌐 Chargement depuis l'API:", CATS_API_URL);
       const response = await fetch(CATS_API_URL);
 
       if (!response.ok) throw new Error(`Erreur HTTP: ${response.status}`);
@@ -41,9 +44,8 @@ export const useCatData = () => {
       const data: ApiResponse = await response.json();
       console.log('📦 Données reçues:', data.images.length, 'images');
 
-
       if (!data.images || data.images.length === 0) {
-        throw new Error('Aucune image de chat trouvée dans l\'API');
+        throw new Error("Aucune image de chat trouvée dans l'API");
       }
 
       // Transformer les données de l'API en objets Cat
@@ -64,7 +66,6 @@ export const useCatData = () => {
       });
 
       setLoading(false);
-
     } catch (err) {
       console.error('❌ Erreur:', err);
       setError(err instanceof Error ? err.message : 'Erreur inconnue');
@@ -82,7 +83,10 @@ export const useCatData = () => {
         return prevCats;
       }
 
-      const { newWinnerScore, newLoserScore } = calculateElo(winner.score, loser.score);
+      const { newWinnerScore, newLoserScore } = calculateElo(
+        winner.score,
+        loser.score
+      );
 
       const newCats = prevCats.map(cat => {
         if (cat.id === winnerId) {
@@ -104,8 +108,10 @@ export const useCatData = () => {
   };
 
   const resetData = () => {
+    if (!window.confirm('Voulez-vous vraiment réinitialiser ?')) {
+      return;
+    }
     StorageService.reset();
-    // imageCache.clear();
     window.location.reload();
   };
 

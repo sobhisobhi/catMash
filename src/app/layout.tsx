@@ -3,7 +3,8 @@ import './globals.scss';
 
 export const metadata: Metadata = {
   title: 'CatMash - Trouve le chat le plus mignon',
-  description: 'Votez pour les chats les plus mignons et découvrez le classement.',
+  description:
+    'Votez pour les chats les plus mignons et découvrez le classement.',
 };
 
 export default function RootLayout({
