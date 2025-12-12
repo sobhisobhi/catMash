@@ -7,7 +7,7 @@
 
 Application web interactive permettant de voter pour les chats les plus mignons et de découvrir le classement communautaire basé sur l'algorithme Elo.
 
-🔗 **Demo**: [catmash.vercel.app](https://cat-mash-one.vercel.app)
+🔗 **Demo**: [catmash.vercel.app](https://catmash-gamma.vercel.app/)
 
 ## ✨ Fonctionnalités
 
@@ -346,7 +346,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 # Production (Vercel Dashboard)
 NODE_ENV=production
 NEXT_PUBLIC_API_URL=https://data.latelier.co
-NEXT_PUBLIC_APP_URL=https://catmash.vercel.app
+NEXT_PUBLIC_APP_URL=https://catmash-gamma.vercel.app/
 ```
 
 ### Checklist Déploiement
@@ -392,7 +392,7 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## 👥 Auteurs
 
-- **Votre Nom** - *Développeur Principal* - [@votre_twitter](https://twitter.com/votre_twitter)
+- **BOUGHANMI** - *Développeur Principal*
 
 ## 🙏 Remerciements
 
@@ -410,9 +410,8 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/votre-username/catmash/issues)
-- **Email**: votre.email@example.com
-- **Twitter**: [@votre_twitter](https://twitter.com/votre_twitter)
+- **Issues**: [GitHub Issues](https://github.com/sobhsobhi/catmash/issues)
+- **Email**: sobhi.boughanmi@gmail.com
 
 ---
 
